@@ -1,0 +1,1044 @@
+{
+  "boxes": [
+    {
+      "id": 136733,
+      "typeBoite": 3,
+      "boxType": "ARRET",
+      "type": "LEVEL_THREE",
+      "ptPosition": {
+        "x": 130.0,
+        "y": 60.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "LB",
+      "mnemoVisible": false,
+      "mnemoPosition": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136702,
+      "typeBoite": 1,
+      "boxType": "BOITE",
+      "type": "LEVEL_ONE",
+      "ptPosition": {
+        "x": 95.0,
+        "y": 56.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "->LB",
+      "mnemoVisible": false,
+      "mnemoPosition": null,
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136732,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 180.0,
+        "y": 60.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "PAL",
+      "mnemoVisible": true,
+      "mnemoPosition": {
+        "x": 180.0,
+        "y": 96.0
+      },
+      "mnemoColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "entrant": false
+    },
+    {
+      "id": 136731,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 250.0,
+        "y": 60.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "WP",
+      "mnemoVisible": true,
+      "mnemoPosition": {
+        "x": 239.0,
+        "y": 96.0
+      },
+      "mnemoColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "entrant": false
+    },
+    {
+      "id": 136730,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 320.0,
+        "y": 60.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "SL",
+      "mnemoVisible": true,
+      "mnemoPosition": {
+        "x": 316.0,
+        "y": 96.0
+      },
+      "mnemoColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "entrant": false
+    },
+    {
+      "id": 136729,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 390.0,
+        "y": 60.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "HA",
+      "mnemoVisible": true,
+      "mnemoPosition": {
+        "x": 387.0,
+        "y": 96.0
+      },
+      "mnemoColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "entrant": false
+    },
+    {
+      "id": 136728,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 460.0,
+        "y": 60.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "OP",
+      "mnemoVisible": true,
+      "mnemoPosition": {
+        "x": 457.0,
+        "y": 96.0
+      },
+      "mnemoColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "entrant": false
+    },
+    {
+      "id": 136727,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 540.0,
+        "y": 60.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "GB",
+      "mnemoVisible": true,
+      "mnemoPosition": {
+        "x": 537.0,
+        "y": 96.0
+      },
+      "mnemoColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "entrant": false
+    },
+    {
+      "id": 136726,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 630.0,
+        "y": 60.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "SD",
+      "mnemoVisible": true,
+      "mnemoPosition": {
+        "x": 637.0,
+        "y": 96.0
+      },
+      "mnemoColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "entrant": false
+    },
+    {
+      "id": 136725,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 710.0,
+        "y": 60.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "SM",
+      "mnemoVisible": true,
+      "mnemoPosition": {
+        "x": 708.0,
+        "y": 96.0
+      },
+      "mnemoColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "entrant": false
+    },
+    {
+      "id": 136724,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 810.0,
+        "y": 60.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "RE",
+      "mnemoVisible": true,
+      "mnemoPosition": {
+        "x": 807.0,
+        "y": 96.0
+      },
+      "mnemoColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "entrant": false
+    },
+    {
+      "id": 136723,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 880.0,
+        "y": 60.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "BV",
+      "mnemoVisible": true,
+      "mnemoPosition": {
+        "x": 877.0,
+        "y": 96.0
+      },
+      "mnemoColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "entrant": false
+    },
+    {
+      "id": 136722,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 950.0,
+        "y": 60.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "FE",
+      "mnemoVisible": true,
+      "mnemoPosition": {
+        "x": 946.0,
+        "y": 96.0
+      },
+      "mnemoColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "entrant": false
+    },
+    {
+      "id": 136720,
+      "typeBoite": 3,
+      "boxType": "ARRET",
+      "type": "LEVEL_THREE",
+      "ptPosition": {
+        "x": 990.0,
+        "y": 60.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "PL",
+      "mnemoVisible": false,
+      "mnemoPosition": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136703,
+      "typeBoite": 3,
+      "boxType": "BOITE",
+      "type": "LEVEL_THREE",
+      "ptPosition": {
+        "x": 1025.0,
+        "y": 46.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "PL->",
+      "mnemoVisible": false,
+      "mnemoPosition": null,
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136718,
+      "typeBoite": 3,
+      "boxType": "ARRET",
+      "type": "LEVEL_THREE",
+      "ptPosition": {
+        "x": 990.0,
+        "y": 130.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "PL",
+      "mnemoVisible": false,
+      "mnemoPosition": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136700,
+      "typeBoite": 0,
+      "boxType": "BOITE",
+      "type": "LEVEL_ZERO",
+      "ptPosition": {
+        "x": 1025.0,
+        "y": 146.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "->PL",
+      "mnemoVisible": false,
+      "mnemoPosition": null,
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136717,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 950.0,
+        "y": 130.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "FE",
+      "mnemoVisible": false,
+      "mnemoPosition": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136716,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 880.0,
+        "y": 130.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "BV",
+      "mnemoVisible": false,
+      "mnemoPosition": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136715,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 810.0,
+        "y": 130.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "RE",
+      "mnemoVisible": false,
+      "mnemoPosition": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136714,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 760.0,
+        "y": 130.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "TU",
+      "mnemoVisible": true,
+      "mnemoPosition": {
+        "x": 757.0,
+        "y": 116.0
+      },
+      "mnemoColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "entrant": false
+    },
+    {
+      "id": 136713,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 710.0,
+        "y": 130.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "SMA",
+      "mnemoVisible": false,
+      "mnemoPosition": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136712,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 630.0,
+        "y": 130.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "SDR",
+      "mnemoVisible": false,
+      "mnemoPosition": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136711,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 540.0,
+        "y": 130.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "GBB",
+      "mnemoVisible": false,
+      "mnemoPosition": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136710,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 460.0,
+        "y": 130.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "OP",
+      "mnemoVisible": false,
+      "mnemoPosition": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136709,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 390.0,
+        "y": 130.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "HA",
+      "mnemoVisible": false,
+      "mnemoPosition": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136708,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 320.0,
+        "y": 130.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "SL",
+      "mnemoVisible": false,
+      "mnemoPosition": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136707,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 250.0,
+        "y": 130.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "WP",
+      "mnemoVisible": false,
+      "mnemoPosition": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136706,
+      "typeBoite": 2,
+      "boxType": "ARRET",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 180.0,
+        "y": 130.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "PAP",
+      "mnemoVisible": false,
+      "mnemoPosition": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136704,
+      "typeBoite": 3,
+      "boxType": "ARRET",
+      "type": "LEVEL_THREE",
+      "ptPosition": {
+        "x": 130.0,
+        "y": 130.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "LB",
+      "mnemoVisible": false,
+      "mnemoPosition": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136701,
+      "typeBoite": 2,
+      "boxType": "BOITE",
+      "type": "LEVEL_TWO",
+      "ptPosition": {
+        "x": 95.0,
+        "y": 146.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "LB->",
+      "mnemoVisible": false,
+      "mnemoPosition": null,
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136699,
+      "typeBoite": 0,
+      "boxType": "DEPOT",
+      "type": "LEVEL_ZERO",
+      "ptPosition": {
+        "x": 1085.0,
+        "y": 46.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "->LIL",
+      "mnemoVisible": true,
+      "mnemoPosition": null,
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": true
+    },
+    {
+      "id": 136699,
+      "typeBoite": 0,
+      "boxType": "DEPOT",
+      "type": "LEVEL_ZERO",
+      "ptPosition": {
+        "x": 1085.0,
+        "y": 146.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "LIL->",
+      "mnemoVisible": true,
+      "mnemoPosition": null,
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    },
+    {
+      "id": 136698,
+      "typeBoite": 0,
+      "boxType": "DEPOT",
+      "type": "LEVEL_ZERO",
+      "ptPosition": {
+        "x": 35.0,
+        "y": 56.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "->BEL",
+      "mnemoVisible": true,
+      "mnemoPosition": null,
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": true
+    },
+    {
+      "id": 136698,
+      "typeBoite": 0,
+      "boxType": "DEPOT",
+      "type": "LEVEL_ZERO",
+      "ptPosition": {
+        "x": 35.0,
+        "y": 136.0
+      },
+      "ptColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "mnemo": "BEL->",
+      "mnemoVisible": true,
+      "mnemoPosition": null,
+      "mnemoColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      },
+      "entrant": false
+    }
+  ],
+  "itineraries": [
+    [
+      {
+        "x": 130.0,
+        "y": 60.0
+      },
+      {
+        "x": 180.0,
+        "y": 60.0
+      },
+      {
+        "x": 250.0,
+        "y": 60.0
+      },
+      {
+        "x": 320.0,
+        "y": 60.0
+      },
+      {
+        "x": 390.0,
+        "y": 60.0
+      },
+      {
+        "x": 460.0,
+        "y": 60.0
+      },
+      {
+        "x": 540.0,
+        "y": 60.0
+      },
+      {
+        "x": 630.0,
+        "y": 60.0
+      },
+      {
+        "x": 710.0,
+        "y": 60.0
+      },
+      {
+        "x": 810.0,
+        "y": 60.0
+      },
+      {
+        "x": 880.0,
+        "y": 60.0
+      },
+      {
+        "x": 950.0,
+        "y": 60.0
+      },
+      {
+        "x": 990.0,
+        "y": 60.0
+      }
+    ],
+    [
+      {
+        "x": 990.0,
+        "y": 130.0
+      },
+      {
+        "x": 950.0,
+        "y": 130.0
+      },
+      {
+        "x": 880.0,
+        "y": 130.0
+      },
+      {
+        "x": 810.0,
+        "y": 130.0
+      },
+      {
+        "x": 760.0,
+        "y": 130.0
+      },
+      {
+        "x": 710.0,
+        "y": 130.0
+      },
+      {
+        "x": 630.0,
+        "y": 130.0
+      },
+      {
+        "x": 540.0,
+        "y": 130.0
+      },
+      {
+        "x": 460.0,
+        "y": 130.0
+      },
+      {
+        "x": 460.0,
+        "y": 130.0
+      },
+      {
+        "x": 390.0,
+        "y": 130.0
+      },
+      {
+        "x": 320.0,
+        "y": 130.0
+      },
+      {
+        "x": 250.0,
+        "y": 130.0
+      },
+      {
+        "x": 180.0,
+        "y": 130.0
+      },
+      {
+        "x": 130.0,
+        "y": 130.0
+      }
+    ]
+  ],
+  "dataDate": "2019-07-05 15:19:02"
+}
