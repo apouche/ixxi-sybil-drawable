@@ -114,8 +114,8 @@ public class BusMapDrawable extends Drawable {
         circle.getPaint().setColor(context.getColor(R.color.lightBlue));
         circle.getPaint().setStyle(Paint.Style.FILL);
         circle.setBounds((int)rect.left, (int)rect.top, (int)rect.right, (int)rect.bottom);
-        canvas.drawCircle(stop.position.y*scale, stop.position.x*scale, dp2px(DEFAULT_CIRCLE_RADIUS), strokeCirclePaint);
-        canvas.drawCircle(stop.position.y*scale, stop.position.x*scale, dp2px(DEFAULT_CIRCLE_RADIUS), fillCirclePaint);
+//        canvas.drawCircle(stop.position.y*scale, stop.position.x*scale, dp2px(DEFAULT_CIRCLE_RADIUS), strokeCirclePaint);
+//        canvas.drawCircle(stop.position.y*scale, stop.position.x*scale, dp2px(DEFAULT_CIRCLE_RADIUS), fillCirclePaint);
         drawableMap.put(circle, stop);
         circle.draw(canvas);
     }

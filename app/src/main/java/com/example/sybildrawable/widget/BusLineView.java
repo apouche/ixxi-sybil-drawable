@@ -7,6 +7,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -65,6 +66,7 @@ public class BusLineView extends FrameLayout {
                         Rect drawableRect = entry.getKey().getBounds();
                         if (drawableRect.contains((int)event.getX(), (int)event.getY() + scrollView.getScrollY())) {
                             Toast.makeText(getContext(), entry.getValue().mnemo, Toast.LENGTH_LONG).show();
+                            return false;
                         }
                     }
                 }
@@ -84,13 +86,5 @@ public class BusLineView extends FrameLayout {
 
     public void decreaseScale() {
         busMapDrawable.setScale(busMapDrawable.getScale() - 0.5f);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            Log.d("BusLineView", "" + event.getX() + " " + event.getY());
-        }
-        return true;
     }
 }
