@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sybildrawable.model.BusLine;
+import com.example.sybildrawable.model.BusPositions;
 import com.example.sybildrawable.model.BusStop;
 import com.example.sybildrawable.model.Vector2f;
 import com.example.sybildrawable.widget.SynopticView;
@@ -28,11 +29,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        InputStream raw =  getResources().openRawResource(R.raw.line169);
-        Reader rd = new BufferedReader(new InputStreamReader(raw));
+        InputStream rawLine =  getResources().openRawResource(R.raw.line20);
+        InputStream rawPositions =  getResources().openRawResource(R.raw.positions20);
+        Reader rdLine = new BufferedReader(new InputStreamReader(rawLine));
+        Reader rdPositions = new BufferedReader(new InputStreamReader(rawPositions));
+
         Gson gson = new Gson();
 //        Type connectionType = new TypeToken<BusPositions>(){}.getType();
-        BusLine connections = gson.fromJson(rd, BusLine.class);
+        BusLine connections = gson.fromJson(rdLine, BusLine.class);
+        BusPositions positions = gson.fromJson(rdPositions, BusPositions.class);
         imageView = findViewById(R.id.image_view);
         moreView = findViewById(R.id.text_more);
         lessView = findViewById(R.id.text_less);
