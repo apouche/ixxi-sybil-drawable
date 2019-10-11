@@ -13,24 +13,24 @@
 
     <TextView
         android:id="@+id/text_less"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:textColor="@color/colorAccent"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:paddingEnd="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
         android:text="-"
         android:textSize="60sp"
         />
 
     <TextView
         android:id="@+id/text_more"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:textColor="@color/colorAccent"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="100dp"
+        android:layout_below="@id/text_less"
+        android:gravity="center"
+        android:layout_alignParentEnd="true"
         android:text="+"
         android:textSize="60sp"
         />
