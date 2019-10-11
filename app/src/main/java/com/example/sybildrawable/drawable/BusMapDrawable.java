@@ -36,7 +36,7 @@ public class BusMapDrawable extends Drawable {
         return scale;
     }
 
-    private float scale = 8f;
+    private float scale = 6f;
     private float maxY = 0;
     private float maxX = 0;
     private float minX = Float.MAX_VALUE;
@@ -81,8 +81,8 @@ public class BusMapDrawable extends Drawable {
     }
 
     private void drawText(@NonNull Canvas canvas, BusStop stop)  {
-        float x = stop.mnemoPosition.y*scale;
-        float y = stop.mnemoPosition.x*scale;
+        float x = stop.mnemoPosition.y*scale + (canvas.getWidth()*0.5f-(maxX-minX)*scale);
+        float y = stop.mnemoPosition.x*scale - minY*scale;
 
         x = (int)x - (int)(textPaint.measureText(stop.mnemo)/2);
         y = (int) (y - ((textPaint.descent() + textPaint.ascent()) / 2)) ;
@@ -92,8 +92,9 @@ public class BusMapDrawable extends Drawable {
         canvas.drawText(stop.mnemo, x, y, textPaint);
     }
     private void drawBox(@NonNull Canvas canvas, BusStop stop)  {
-        float x = stop.position.y*scale;
-        float y = stop.position.x*scale;
+        float x = stop.position.y*scale - dp2px(DEFAULT_BOX_LENGTH)*scale*0.5f + (canvas.getWidth()*0.5f-(maxX-minX)*scale);
+        float y = stop.position.x*scale - minY*scale;
+
         RectF rect = new RectF(x,y, x + dp2px(DEFAULT_BOX_LENGTH)*scale,y + dp2px(DEFAULT_BOX_LENGTH)*scale);
         ShapeDrawable square = new ShapeDrawable(new RectShape());
         square.getPaint().setColor(context.getColor(R.color.lightBlue));
@@ -108,8 +109,8 @@ public class BusMapDrawable extends Drawable {
 
     private void drawDot(@NonNull Canvas canvas, BusStop stop)  {
         ShapeDrawable circle = new ShapeDrawable(new OvalShape());
-        float x = stop.position.y*scale - dp2px(DEFAULT_CIRCLE_RADIUS)/2;
-        float y = stop.position.x*scale - dp2px(DEFAULT_CIRCLE_RADIUS)/2;
+        float x = stop.position.y*scale - dp2px(DEFAULT_CIRCLE_RADIUS)/2 + (canvas.getWidth()*0.5f-(maxX-minX)*scale);
+        float y = stop.position.x*scale - dp2px(DEFAULT_CIRCLE_RADIUS)/2 - minY*scale;
         RectF rect = new RectF(x,y, x + dp2px(DEFAULT_CIRCLE_RADIUS),y + dp2px(DEFAULT_CIRCLE_RADIUS));
         circle.getPaint().setColor(context.getColor(R.color.lightBlue));
         circle.getPaint().setStyle(Paint.Style.FILL);
@@ -149,14 +150,8 @@ public class BusMapDrawable extends Drawable {
     public void updateWith(BusLine line) {
         this.line = line;
 
-        // find the stop with "lowest" position
-        // (remember x and y will be inverted during drawing)
-        for (BusStop stop: line.boxes) {
-            maxY = Math.max(stop.position.x, maxY);
-            maxX = Math.max(stop.position.y, maxX);
-            minX = Math.min(stop.position.y, minX);
-            minY = Math.min(stop.position.x, minY);
-        }
+        // update min/max bounds
+        findMinMaxBounds();
 
         // forces drawing pass
         invalidateSelf();
@@ -165,7 +160,21 @@ public class BusMapDrawable extends Drawable {
     public void setScale(float scale) {
         this.scale = scale;
 
+        // update min/max bounds
+        findMinMaxBounds();
+
         // forces drawing pass
         invalidateSelf();
+    }
+
+    private void findMinMaxBounds() {
+        // find the stop with "lowest" and "highest" positions
+        // (remember x and y will be inverted during drawing)
+        for (BusStop stop: line.boxes) {
+            maxY = Math.max(stop.position.x, maxY);
+            maxX = Math.max(stop.position.y, maxX);
+            minX = Math.min(stop.position.y, minX);
+            minY = Math.min(stop.position.x, minY);
+        }
     }
 }

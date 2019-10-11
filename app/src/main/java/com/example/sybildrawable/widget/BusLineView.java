@@ -78,13 +78,18 @@ public class BusLineView extends FrameLayout {
     public void updateWith(BusLine connections) {
         busMapDrawable.updateWith(connections);
         imageView.setImageDrawable(busMapDrawable);
+
     }
 
     public void increaseScale() {
         busMapDrawable.setScale(busMapDrawable.getScale() + 0.5f);
+        imageView.requestLayout();
+        Log.d("Sybil", "" + scrollView.getChildAt(0).getHeight());
     }
 
     public void decreaseScale() {
         busMapDrawable.setScale(busMapDrawable.getScale() - 0.5f);
+        imageView.requestLayout();
+        Log.d("Sybil", "" + scrollView.getChildAt(0).getHeight());
     }
 }
