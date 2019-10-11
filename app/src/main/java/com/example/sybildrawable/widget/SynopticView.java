@@ -73,7 +73,7 @@ public class SynopticView extends FrameLayout {
                         // copy rect so that bounds do not get modified
                         drawableRect.set(entry.getKey().getBounds());
 
-                        // for bus stops, increase the hit zone of the are defined by the drawable
+                        // for bus stops, increase the hit zone of the area defined by the drawable
                         if (entry.getValue().isStop()) {
                             drawableRect.left -= Utils.dp2px(getContext(), HITBOX_OFFSET_DP);
                             drawableRect.top -= Utils.dp2px(getContext(), HITBOX_OFFSET_DP);
