@@ -13,8 +13,8 @@ public class BusStop {
     public String mnemo;
 
     @SerializedName("ptPosition")
-    public BusPosition position;
+    public Vector2f position;
 
     @SerializedName("mnemoPosition")
-    public BusPosition mnemoPosition;
+    public Vector2f mnemoPosition;
 }

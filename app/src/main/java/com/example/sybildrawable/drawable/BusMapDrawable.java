@@ -12,7 +12,6 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.graphics.drawable.shapes.RectShape;
 import android.util.TypedValue;
-import android.widget.ScrollView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,7 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.example.sybildrawable.model. BusLine;
-import com.example.sybildrawable.model.BusPosition;
+import com.example.sybildrawable.model.Vector2f;
 import com.example.sybildrawable.model.BusStop;
 
 public class BusMapDrawable extends Drawable {
@@ -69,7 +68,7 @@ public class BusMapDrawable extends Drawable {
         canvas.drawRect(new Rect(0, 0, getBounds().width(), getBounds().height()), backgroundPaint);
 
         // start by drawing lines so that they appear in the background
-        for (List<BusPosition> positions: line.itineraries) {
+        for (List<Vector2f> positions: line.itineraries) {
             drawLine(canvas, positions);
         }
 
@@ -86,13 +85,13 @@ public class BusMapDrawable extends Drawable {
 
     }
 
-    private void drawLine(Canvas canvas, List<BusPosition> positions) {
+    private void drawLine(Canvas canvas, List<Vector2f> positions) {
         for (int i = 0; i < positions.size(); ++i) {
             if (i == 0)
                 continue;
 
-            BusPosition lastPosition = positions.get(i-1);
-            BusPosition currentPosition = positions.get(i);
+            Vector2f lastPosition = positions.get(i-1);
+            Vector2f currentPosition = positions.get(i);
 
             float lastX = lastPosition.y*scale + (canvas.getWidth()*0.5f-(maxX-minX)*scale);
             float lastY = lastPosition.x*scale - minY*scale;
