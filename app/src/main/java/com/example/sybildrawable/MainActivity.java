@@ -3,10 +3,13 @@ package com.example.sybildrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sybildrawable.model.BusLine;
+import com.example.sybildrawable.model.BusStop;
+import com.example.sybildrawable.model.Vector2f;
 import com.example.sybildrawable.widget.BusLineView;
 import com.google.gson.Gson;
 
@@ -35,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
         lessView = findViewById(R.id.text_less);
         busLineView = findViewById(R.id.bus_line_view);
         busLineView.updateWith(connections);
+        busLineView.setOnSelectStopListener(new BusLineView.Listener() {
+            @Override
+            public void onClick(BusStop busStop, Vector2f coordinates) {
+                Toast.makeText(MainActivity.this, busStop.mnemo, Toast.LENGTH_LONG).show();
+            }
+        });
 
         moreView.setOnClickListener(new View.OnClickListener() {
             @Override

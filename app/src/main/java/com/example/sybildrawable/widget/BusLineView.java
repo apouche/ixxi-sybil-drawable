@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ScrollView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +20,7 @@ import com.example.sybildrawable.R;
 import com.example.sybildrawable.drawable.BusMapDrawable;
 import com.example.sybildrawable.model.BusLine;
 import com.example.sybildrawable.model.BusStop;
+import com.example.sybildrawable.model.Vector2f;
 import com.example.sybildrawable.utils.Utils;
 
 import java.util.Map;
@@ -30,7 +30,12 @@ public class BusLineView extends FrameLayout {
     private ImageView imageView;
     private ScrollView scrollView;
     private static int HITBOX_OFFSET_DP = 20; // in dp
+    private Listener onSelectStopListener;
 
+    public interface Listener {
+
+        void onClick(BusStop busStop, Vector2f coordinates);
+    }
     public BusLineView(@NonNull Context context) {
         super(context);
         init();
@@ -76,8 +81,13 @@ public class BusLineView extends FrameLayout {
                             drawableRect.bottom += Utils.dp2px(getContext(), HITBOX_OFFSET_DP);
                         }
 
-                        if (drawableRect.contains((int)event.getX(), (int)event.getY() + scrollView.getScrollY())) {
-                            Toast.makeText(getContext(), entry.getValue().mnemo, Toast.LENGTH_LONG).show();
+                        float absoluteX = event.getX();
+                        float absoluteY = event.getY() + scrollView.getScrollY();
+
+                        if (drawableRect.contains((int)absoluteX, (int)absoluteY)) {
+                            if (onSelectStopListener != null) {
+                                onSelectStopListener.onClick(entry.getValue(), new Vector2f(absoluteX, absoluteY));
+                            }
                             return false;
                         }
                     }
@@ -102,5 +112,9 @@ public class BusLineView extends FrameLayout {
         busMapDrawable.setScale(busMapDrawable.getScale() - 0.5f);
         imageView.requestLayout();
         Log.d("Sybil", "" + scrollView.getChildAt(0).getHeight());
+    }
+
+    public void setOnSelectStopListener(Listener onSelectStopListener) {
+        this.onSelectStopListener = onSelectStopListener;
     }
 }
