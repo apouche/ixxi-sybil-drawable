@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.sybildrawable.model.BusLine;
 import com.example.sybildrawable.widget.BusLineView;
 import com.google.gson.Gson;
 
@@ -13,9 +14,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-
-import com.example.sybildrawable.drawable.BusMapDrawable;
-import com.example.sybildrawable.model.BusLine;
 
 public class MainActivity extends AppCompatActivity {
     ImageView imageView;
@@ -27,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        InputStream raw =  getResources().openRawResource(R.raw.line20);
+        InputStream raw =  getResources().openRawResource(R.raw.line169);
         Reader rd = new BufferedReader(new InputStreamReader(raw));
         Gson gson = new Gson();
 //        Type connectionType = new TypeToken<BusPositions>(){}.getType();

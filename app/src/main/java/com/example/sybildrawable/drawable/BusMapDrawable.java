@@ -12,6 +12,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.graphics.drawable.shapes.RectShape;
 import android.util.TypedValue;
+import android.widget.ScrollView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,18 +20,19 @@ import androidx.annotation.Nullable;
 import com.example.sybildrawable.R;
 
 import java.util.HashMap;
+import java.util.List;
 
-import com.example.sybildrawable.model.BusLine;
+import com.example.sybildrawable.model. BusLine;
+import com.example.sybildrawable.model.BusPosition;
 import com.example.sybildrawable.model.BusStop;
 
 public class BusMapDrawable extends Drawable {
     private static int DEFAULT_BOX_LENGTH = 10;
-    private static int DEFAULT_CIRCLE_RADIUS = 30;
+    private static int DEFAULT_LINE_WIDTH = 8;
+    private static int DEFAULT_CIRCLE_RADIUS = 20;
     private Paint backgroundPaint = new Paint();
-    private Paint boxPaint = new Paint();
     private Paint textPaint = new Paint();
-    private Paint fillCirclePaint = new Paint();
-    private Paint strokeCirclePaint = new Paint();
+    private Paint linePaint = new Paint();
 
     public float getScale() {
         return scale;
@@ -49,14 +51,11 @@ public class BusMapDrawable extends Drawable {
     public BusMapDrawable(Context context) {
         this.context = context;
         backgroundPaint.setColor(context.getColor(R.color.normalBlue));
-        boxPaint.setColor(context.getColor(R.color.lightBlue));
         textPaint.setColor(context.getColor(R.color.darkBlue));
         textPaint.setTextSize(40);
-        strokeCirclePaint.setColor(context.getColor(R.color.lightBlue));
-        strokeCirclePaint.setStyle(Paint.Style.STROKE);
-        strokeCirclePaint.setStrokeWidth(dp2px(2));
-        fillCirclePaint.setColor(context.getColor(R.color.darkBlue));
-        fillCirclePaint.setStyle(Paint.Style.FILL);
+        linePaint.setColor(context.getColor(R.color.colorAccent));
+        linePaint.setStrokeWidth(dp2px(DEFAULT_LINE_WIDTH));
+        linePaint.setStyle(Paint.Style.FILL_AND_STROKE);
     }
 
     private float dp2px(int dp) {
@@ -68,6 +67,12 @@ public class BusMapDrawable extends Drawable {
         drawableMap = new HashMap<>();
 
         canvas.drawRect(new Rect(0, 0, getBounds().width(), getBounds().height()), backgroundPaint);
+
+        // start by drawing lines so that they appear in the background
+        for (List<BusPosition> positions: line.itineraries) {
+            drawLine(canvas, positions);
+        }
+
         for (BusStop stop: line.boxes) {
             if (stop.type.equals("ARRET")) {
                 drawDot(canvas, stop);
@@ -78,6 +83,24 @@ public class BusMapDrawable extends Drawable {
             if (stop.mnemoPosition != null && stop.mnemoPosition.x != 0 && stop.mnemoPosition.y != 0 )
                 drawText(canvas, stop);
         }
+
+    }
+
+    private void drawLine(Canvas canvas, List<BusPosition> positions) {
+        for (int i = 0; i < positions.size(); ++i) {
+            if (i == 0)
+                continue;
+
+            BusPosition lastPosition = positions.get(i-1);
+            BusPosition currentPosition = positions.get(i);
+
+            float lastX = lastPosition.y*scale + (canvas.getWidth()*0.5f-(maxX-minX)*scale);
+            float lastY = lastPosition.x*scale - minY*scale;
+            float currentX = currentPosition.y*scale + (canvas.getWidth()*0.5f-(maxX-minX)*scale);
+            float currentY = currentPosition.x*scale - minY*scale;
+
+            canvas.drawLine(lastX, lastY, currentX, currentY, linePaint);
+        }
     }
 
     private void drawText(@NonNull Canvas canvas, BusStop stop)  {
@@ -86,9 +109,7 @@ public class BusMapDrawable extends Drawable {
 
         x = (int)x - (int)(textPaint.measureText(stop.mnemo)/2);
         y = (int) (y - ((textPaint.descent() + textPaint.ascent()) / 2)) ;
-        //((textPaint.descent() + textPaint.ascent()) / 2) is the distance from the baseline to the center.
 
-//        canvas.drawText("Hello", xPos, yPos, textPaint);
         canvas.drawText(stop.mnemo, x, y, textPaint);
     }
     private void drawBox(@NonNull Canvas canvas, BusStop stop)  {
@@ -102,9 +123,6 @@ public class BusMapDrawable extends Drawable {
         square.setBounds((int)rect.left, (int)rect.top, (int)rect.right, (int)rect.bottom);
         square.draw(canvas);
         drawableMap.put(square, stop);
-//        canvas.drawCircle(stop.position.y*scale, stop.position.x*scale, dp2px(10), strokeCirclePaint);
-//        canvas.drawRect(rect, boxPaint);
-        drawDot(canvas, stop);
     }
 
     private void drawDot(@NonNull Canvas canvas, BusStop stop)  {
@@ -115,8 +133,6 @@ public class BusMapDrawable extends Drawable {
         circle.getPaint().setColor(context.getColor(R.color.lightBlue));
         circle.getPaint().setStyle(Paint.Style.FILL);
         circle.setBounds((int)rect.left, (int)rect.top, (int)rect.right, (int)rect.bottom);
-//        canvas.drawCircle(stop.position.y*scale, stop.position.x*scale, dp2px(DEFAULT_CIRCLE_RADIUS), strokeCirclePaint);
-//        canvas.drawCircle(stop.position.y*scale, stop.position.x*scale, dp2px(DEFAULT_CIRCLE_RADIUS), fillCirclePaint);
         drawableMap.put(circle, stop);
         circle.draw(canvas);
     }
@@ -159,9 +175,6 @@ public class BusMapDrawable extends Drawable {
 
     public void setScale(float scale) {
         this.scale = scale;
-
-        // update min/max bounds
-        findMinMaxBounds();
 
         // forces drawing pass
         invalidateSelf();

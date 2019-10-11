@@ -4,4 +4,5 @@ import java.util.List;
 
 public class BusLine {
     public List<BusStop> boxes;
+    public List<List<BusPosition>> itineraries;
 }
