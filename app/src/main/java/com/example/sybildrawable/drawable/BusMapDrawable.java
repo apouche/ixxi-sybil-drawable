@@ -93,9 +93,9 @@ public class BusMapDrawable extends Drawable {
             Vector2f lastPosition = positions.get(i-1);
             Vector2f currentPosition = positions.get(i);
 
-            float lastX = lastPosition.y*scale + (canvas.getWidth()*0.5f-(maxX-minX)*scale);
+            float lastX = lastPosition.y*scale + getXCenterOffset(canvas);;
             float lastY = lastPosition.x*scale - minY*scale;
-            float currentX = currentPosition.y*scale + (canvas.getWidth()*0.5f-(maxX-minX)*scale);
+            float currentX = currentPosition.y*scale + getXCenterOffset(canvas);;
             float currentY = currentPosition.x*scale - minY*scale;
 
             canvas.drawLine(lastX, lastY, currentX, currentY, linePaint);
@@ -103,7 +103,7 @@ public class BusMapDrawable extends Drawable {
     }
 
     private void drawText(@NonNull Canvas canvas, BusStop stop)  {
-        float x = stop.mnemoPosition.y*scale + (canvas.getWidth()*0.5f-(maxX-minX)*scale);
+        float x = stop.mnemoPosition.y*scale + getXCenterOffset(canvas);;
         float y = stop.mnemoPosition.x*scale - minY*scale;
 
         x = (int)x - (int)(textPaint.measureText(stop.mnemo)/2);
@@ -112,7 +112,7 @@ public class BusMapDrawable extends Drawable {
         canvas.drawText(stop.mnemo, x, y, textPaint);
     }
     private void drawBox(@NonNull Canvas canvas, BusStop stop)  {
-        float x = stop.position.y*scale - dp2px(DEFAULT_BOX_LENGTH)*scale*0.5f + (canvas.getWidth()*0.5f-(maxX-minX)*scale);
+        float x = stop.position.y*scale - dp2px(DEFAULT_BOX_LENGTH)*scale*0.5f + getXCenterOffset(canvas);
         float y = stop.position.x*scale - minY*scale;
 
         RectF rect = new RectF(x,y, x + dp2px(DEFAULT_BOX_LENGTH)*scale,y + dp2px(DEFAULT_BOX_LENGTH)*scale);
@@ -126,7 +126,7 @@ public class BusMapDrawable extends Drawable {
 
     private void drawDot(@NonNull Canvas canvas, BusStop stop)  {
         ShapeDrawable circle = new ShapeDrawable(new OvalShape());
-        float x = stop.position.y*scale - dp2px(DEFAULT_CIRCLE_RADIUS)/2 + (canvas.getWidth()*0.5f-(maxX-minX)*scale);
+        float x = stop.position.y*scale - dp2px(DEFAULT_CIRCLE_RADIUS)/2 + getXCenterOffset(canvas);
         float y = stop.position.x*scale - dp2px(DEFAULT_CIRCLE_RADIUS)/2 - minY*scale;
         RectF rect = new RectF(x,y, x + dp2px(DEFAULT_CIRCLE_RADIUS),y + dp2px(DEFAULT_CIRCLE_RADIUS));
         circle.getPaint().setColor(context.getColor(R.color.lightBlue));
@@ -136,6 +136,9 @@ public class BusMapDrawable extends Drawable {
         circle.draw(canvas);
     }
 
+    private float getXCenterOffset(Canvas canvas) {
+        return (canvas.getWidth()*0.5f-(maxX-minX)*scale);
+    }
 
     @Override
     public int getIntrinsicHeight() {
