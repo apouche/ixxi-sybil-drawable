@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.example.sybildrawable.widget.BusLineView
+    <com.example.sybildrawable.widget.SynopticView
         android:id="@+id/bus_line_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

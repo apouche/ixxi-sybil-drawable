@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.sybildrawable.model.BusLine;
 import com.example.sybildrawable.model.BusStop;
 import com.example.sybildrawable.model.Vector2f;
-import com.example.sybildrawable.widget.BusLineView;
+import com.example.sybildrawable.widget.SynopticView;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageView;
     View moreView;
     View lessView;
-    BusLineView busLineView;
+    SynopticView busLineView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         lessView = findViewById(R.id.text_less);
         busLineView = findViewById(R.id.bus_line_view);
         busLineView.updateWith(connections);
-        busLineView.setOnSelectStopListener(new BusLineView.Listener() {
+        busLineView.setOnSelectStopListener(new SynopticView.SelectionListener() {
             @Override
             public void onClick(BusStop busStop, Vector2f coordinates) {
                 Toast.makeText(MainActivity.this, busStop.mnemo, Toast.LENGTH_LONG).show();

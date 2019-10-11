@@ -26,7 +26,7 @@ import com.example.sybildrawable.model.Vector2f;
 import com.example.sybildrawable.model.BusStop;
 import com.example.sybildrawable.utils.Utils;
 
-public class BusMapDrawable extends Drawable {
+public class SynopticDrawable extends Drawable {
     private static int DEFAULT_BOX_LENGTH = 10;
     private static int DEFAULT_LINE_WIDTH = 8;
     private static int DEFAULT_CIRCLE_RADIUS = 20;
@@ -48,7 +48,7 @@ public class BusMapDrawable extends Drawable {
 
     public HashMap<Drawable, BusStop> drawableMap;
 
-    public BusMapDrawable(Context context) {
+    public SynopticDrawable(Context context) {
         this.context = context;
         backgroundPaint.setColor(context.getColor(R.color.normalBlue));
         textPaint.setColor(context.getColor(R.color.darkBlue));
