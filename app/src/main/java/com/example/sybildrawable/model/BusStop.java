@@ -17,4 +17,8 @@ public class BusStop {
 
     @SerializedName("mnemoPosition")
     public Vector2f mnemoPosition;
+
+    public boolean isStop() {
+        return type.equals("ARRET");
+    }
 }

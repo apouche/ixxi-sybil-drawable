@@ -21,6 +21,7 @@ import com.example.sybildrawable.R;
 import com.example.sybildrawable.drawable.BusMapDrawable;
 import com.example.sybildrawable.model.BusLine;
 import com.example.sybildrawable.model.BusStop;
+import com.example.sybildrawable.utils.Utils;
 
 import java.util.Map;
 
@@ -28,6 +29,7 @@ public class BusLineView extends FrameLayout {
     private BusMapDrawable busMapDrawable;
     private ImageView imageView;
     private ScrollView scrollView;
+    private static int HITBOX_OFFSET_DP = 20; // in dp
 
     public BusLineView(@NonNull Context context) {
         super(context);
@@ -61,7 +63,19 @@ public class BusLineView extends FrameLayout {
 
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     for(Map.Entry<Drawable, BusStop> entry : busMapDrawable.drawableMap.entrySet()) {
-                        Rect drawableRect = entry.getKey().getBounds();
+                        Rect drawableRect = new Rect();
+
+                        // copy rect so that bounds do not get modified
+                        drawableRect.set(entry.getKey().getBounds());
+
+                        // for bus stops, increase the hit zone of the are defined by the drawable
+                        if (entry.getValue().isStop()) {
+                            drawableRect.left -= Utils.dp2px(getContext(), HITBOX_OFFSET_DP);
+                            drawableRect.top -= Utils.dp2px(getContext(), HITBOX_OFFSET_DP);
+                            drawableRect.right += Utils.dp2px(getContext(), HITBOX_OFFSET_DP);
+                            drawableRect.bottom += Utils.dp2px(getContext(), HITBOX_OFFSET_DP);
+                        }
+
                         if (drawableRect.contains((int)event.getX(), (int)event.getY() + scrollView.getScrollY())) {
                             Toast.makeText(getContext(), entry.getValue().mnemo, Toast.LENGTH_LONG).show();
                             return false;
@@ -76,7 +90,6 @@ public class BusLineView extends FrameLayout {
     public void updateWith(BusLine connections) {
         busMapDrawable.updateWith(connections);
         imageView.setImageDrawable(busMapDrawable);
-
     }
 
     public void increaseScale() {

@@ -24,6 +24,7 @@ import java.util.List;
 import com.example.sybildrawable.model. BusLine;
 import com.example.sybildrawable.model.Vector2f;
 import com.example.sybildrawable.model.BusStop;
+import com.example.sybildrawable.utils.Utils;
 
 public class BusMapDrawable extends Drawable {
     private static int DEFAULT_BOX_LENGTH = 10;
@@ -53,12 +54,8 @@ public class BusMapDrawable extends Drawable {
         textPaint.setColor(context.getColor(R.color.darkBlue));
         textPaint.setTextSize(40);
         linePaint.setColor(context.getColor(R.color.colorAccent));
-        linePaint.setStrokeWidth(dp2px(DEFAULT_LINE_WIDTH));
+        linePaint.setStrokeWidth(Utils.dp2px(context, DEFAULT_LINE_WIDTH));
         linePaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    }
-
-    private float dp2px(int dp) {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
     }
 
     @Override
@@ -73,7 +70,7 @@ public class BusMapDrawable extends Drawable {
         }
 
         for (BusStop stop: line.boxes) {
-            if (stop.type.equals("ARRET")) {
+            if (stop.isStop()) {
                 drawDot(canvas, stop);
             }
             else {
@@ -112,10 +109,10 @@ public class BusMapDrawable extends Drawable {
         canvas.drawText(stop.mnemo, x, y, textPaint);
     }
     private void drawBox(@NonNull Canvas canvas, BusStop stop)  {
-        float x = stop.position.y*scale - dp2px(DEFAULT_BOX_LENGTH)*scale*0.5f + getXCenterOffset(canvas);
+        float x = stop.position.y*scale - Utils.dp2px(context, DEFAULT_BOX_LENGTH)*scale*0.5f + getXCenterOffset(canvas);
         float y = stop.position.x*scale - minY*scale;
 
-        RectF rect = new RectF(x,y, x + dp2px(DEFAULT_BOX_LENGTH)*scale,y + dp2px(DEFAULT_BOX_LENGTH)*scale);
+        RectF rect = new RectF(x,y, x + Utils.dp2px(context, DEFAULT_BOX_LENGTH)*scale,y + Utils.dp2px(context, DEFAULT_BOX_LENGTH)*scale);
         ShapeDrawable square = new ShapeDrawable(new RectShape());
         square.getPaint().setColor(context.getColor(R.color.lightBlue));
         square.getPaint().setStyle(Paint.Style.FILL);
@@ -126,9 +123,9 @@ public class BusMapDrawable extends Drawable {
 
     private void drawDot(@NonNull Canvas canvas, BusStop stop)  {
         ShapeDrawable circle = new ShapeDrawable(new OvalShape());
-        float x = stop.position.y*scale - dp2px(DEFAULT_CIRCLE_RADIUS)/2 + getXCenterOffset(canvas);
-        float y = stop.position.x*scale - dp2px(DEFAULT_CIRCLE_RADIUS)/2 - minY*scale;
-        RectF rect = new RectF(x,y, x + dp2px(DEFAULT_CIRCLE_RADIUS),y + dp2px(DEFAULT_CIRCLE_RADIUS));
+        float x = stop.position.y*scale - Utils.dp2px(context, DEFAULT_CIRCLE_RADIUS)/2 + getXCenterOffset(canvas);
+        float y = stop.position.x*scale - Utils.dp2px(context, DEFAULT_CIRCLE_RADIUS)/2 - minY*scale;
+        RectF rect = new RectF(x,y, x + Utils.dp2px(context, DEFAULT_CIRCLE_RADIUS),y + Utils.dp2px(context, DEFAULT_CIRCLE_RADIUS));
         circle.getPaint().setColor(context.getColor(R.color.lightBlue));
         circle.getPaint().setStyle(Paint.Style.FILL);
         circle.setBounds((int)rect.left, (int)rect.top, (int)rect.right, (int)rect.bottom);
