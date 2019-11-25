@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.example.sybildrawable.model. BusLine;
+import com.example.sybildrawable.model.BusPositions;
 import com.example.sybildrawable.model.Vector2f;
 import com.example.sybildrawable.model.BusStop;
 import com.example.sybildrawable.utils.Utils;
@@ -45,6 +46,7 @@ public class SynopticDrawable extends Drawable {
     private float minY = Float.MAX_VALUE;
     private Context context;
     private BusLine line;
+    private BusPositions positions;
 
     public HashMap<Drawable, BusStop> drawableMap;
 
@@ -162,8 +164,9 @@ public class SynopticDrawable extends Drawable {
         return PixelFormat.OPAQUE;
     }
 
-    public void updateWith(BusLine line) {
+    public void updateWith(BusLine line, BusPositions positions) {
         this.line = line;
+        this.positions = positions;
 
         // update min/max bounds
         findMinMaxBounds();

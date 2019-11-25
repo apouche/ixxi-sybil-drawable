@@ -8,10 +8,10 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import com.example.sybildrawable.R;
 import com.example.sybildrawable.drawable.SynopticDrawable;
 import com.example.sybildrawable.model.BusLine;
+import com.example.sybildrawable.model.BusPositions;
 import com.example.sybildrawable.model.BusStop;
 import com.example.sybildrawable.model.Vector2f;
 import com.example.sybildrawable.utils.Utils;
@@ -26,11 +27,18 @@ import com.example.sybildrawable.utils.Utils;
 import java.util.Map;
 
 public class SynopticView extends FrameLayout {
+    private static float DEFAULT_SCALE = 6f;
+    private static float ZOOM_SENSITIVITY = 3f;
+
     private SynopticDrawable synopticDrawable;
+    private ScaleGestureDetector scaleGestureDetector;
     private ImageView imageView;
-    private ScrollView scrollView;
+    private SynopticScrollView scrollView;
+    private float relativeZoomLevel = 0f;
+    private float absoluteZoomLevel = DEFAULT_SCALE;
     private static int HITBOX_OFFSET_DP = 20; // in dp
     private SelectionListener onSelectStopListener;
+
 
     public interface SelectionListener {
 
@@ -60,15 +68,52 @@ public class SynopticView extends FrameLayout {
     private void init() {
         LayoutInflater.from(getContext()).inflate(R.layout.bus_line_view, this, true);
         synopticDrawable = new SynopticDrawable(getContext());
+        synopticDrawable.setScale(absoluteZoomLevel);
+
         imageView = findViewById(R.id.image_view);
         scrollView = findViewById(R.id.scroll_view);
+        scaleGestureDetector = new ScaleGestureDetector(getContext(), new ScaleGestureDetector.SimpleOnScaleGestureListener() {
+            @Override
+            public boolean onScaleBegin(ScaleGestureDetector detector) {
+                Log.d("SynopticView", "PINCH! BEGIN! ");
+                scrollView.setScrollingEnabled(false);
+                return true;
+            }
+
+            @Override
+            public boolean onScale(ScaleGestureDetector detector) {
+                relativeZoomLevel = absoluteZoomLevel - (1f - detector.getScaleFactor())*ZOOM_SENSITIVITY;
+//                relativeZoomLevel = Math.max(relativeZoomLevel, 0f);
+                synopticDrawable.setScale(relativeZoomLevel);
+                imageView.requestLayout();
+
+                Log.d("SynopticView", "zoom: " + relativeZoomLevel);
+                Log.d("SynopticView", "scale: " + detector.getScaleFactor());
+
+                return false;
+            }
+
+            @Override
+            public void onScaleEnd(ScaleGestureDetector detector) {
+                Log.d("SynopticView", "PINCH! END! ");
+                absoluteZoomLevel = relativeZoomLevel;
+                scrollView.setScrollingEnabled(true);
+
+            }
+        });
+
         scrollView.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                scaleGestureDetector.onTouchEvent(event);
+
+                if (scaleGestureDetector.isInProgress())
+                    return false;
 
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     for(Map.Entry<Drawable, BusStop> entry : synopticDrawable.drawableMap.entrySet()) {
                         Rect drawableRect = new Rect();
+
 
                         // copy rect so that bounds do not get modified
                         drawableRect.set(entry.getKey().getBounds());
@@ -97,8 +142,8 @@ public class SynopticView extends FrameLayout {
         });
     }
 
-    public void updateWith(BusLine connections) {
-        synopticDrawable.updateWith(connections);
+    public void updateWith(BusLine connections, BusPositions positions) {
+        synopticDrawable.updateWith(connections, positions);
         imageView.setImageDrawable(synopticDrawable);
     }
 
@@ -117,4 +162,6 @@ public class SynopticView extends FrameLayout {
     public void setOnSelectStopListener(SelectionListener onSelectStopListener) {
         this.onSelectStopListener = onSelectStopListener;
     }
+
+
 }
